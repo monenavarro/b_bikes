@@ -10,8 +10,8 @@ describe DockingStation do
 
   describe '#dock' do 
     it "Dock full" do
-      p subject.dock(Bike.new)
-      p expect { subject.dock(Bike.new) }.to raise_error 'Dock already full'
+      subject.dock(Bike.new)
+      expect { subject.dock(Bike.new) }.to raise_error 'Dock already full'
     end
   end
 
