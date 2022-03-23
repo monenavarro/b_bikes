@@ -8,6 +8,13 @@ describe DockingStation do
     expect(subject.dock(bike)).to eq bike
   end
 
+  describe '#dock' do 
+    it "Dock full" do
+      p subject.dock(Bike.new)
+      p expect { subject.dock(Bike.new) }.to raise_error 'Dock already full'
+    end
+  end
+
   it "creates bike then docks then releases" do
     bike = Bike.new
     subject.dock(bike)
