@@ -10,7 +10,7 @@ describe DockingStation do
 
   describe '#dock' do 
     it "Dock full" do
-      subject.DEFAULT_CAPACITY.times do subject.dock(Bike.new) end
+      subject.capacity.times do subject.dock(Bike.new) end
       expect { subject.dock(Bike.new) }.to raise_error 'Dock already full'
     end
   end
@@ -25,7 +25,21 @@ describe DockingStation do
     it "There are no bikes left" do
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
+  end
+
+  describe 'can be initialized with a custom capacity' do 
+    r = rand(100)
+    station = DockingStation.new(r)
+    it "initializes with #{r}" do
+      expect(station.capacity).to eq(r)
+    end
   end 
 
+  describe 'will initialize with default capacity 20 if no custom capacity given' do
+    station = DockingStation.new
+    it "initializes with default capacity 20" do
+      expect(station.capacity).to eq(20)
+    end
+  end
 end
 
