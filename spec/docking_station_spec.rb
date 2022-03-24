@@ -10,7 +10,7 @@ describe DockingStation do
 
   describe '#dock' do 
     it "Dock full" do
-      20.times do subject.dock(Bike.new) end
+      subject.DEFAULT_CAPACITY.times do subject.dock(Bike.new) end
       expect { subject.dock(Bike.new) }.to raise_error 'Dock already full'
     end
   end
