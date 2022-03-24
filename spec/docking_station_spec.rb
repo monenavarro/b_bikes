@@ -41,5 +41,15 @@ describe DockingStation do
       expect(station.capacity).to eq(20)
     end
   end
+
+  describe 'will accept to dock a bike that is reported broken' do
+    station = DockingStation.new
+    broken_bike = Bike.new
+    station.dock(broken_bike, working = false)
+    it "docks the bike, adds it to bikes, changes its status to broken" do
+      expect(station.bikes).to include(broken_bike)
+      expect(broken_bike.working?).to be false
+    end
+  end
 end
 

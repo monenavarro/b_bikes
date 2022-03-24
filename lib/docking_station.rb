@@ -16,8 +16,15 @@ class DockingStation
     @bikes.empty?
   end
 
-  def dock(bike)
+  def dock(bike, working = true)
+    p working
     fail 'Dock already full' if full?
+    p 'has not failed yet'
+    if working == false 
+      p 'we are now entering the loop'
+      bike.report_broken 
+      p bike.working?
+    end
     @bikes << bike
     @bike = bike
   end
