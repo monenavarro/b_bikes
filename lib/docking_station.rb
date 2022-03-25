@@ -17,7 +17,6 @@ class DockingStation
   end
 
   def dock(bike, working = true)
-    p working
     fail 'Dock already full' if full?
     p 'has not failed yet'
     if working == false 

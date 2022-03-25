@@ -2,14 +2,14 @@ require 'docking_station'
 
 describe DockingStation do
   let(:bike) { Bike.new }
-  it { is_expected.to respond_to :release_bike }
+  it {is_expected.to respond_to :release_bike} 
 
   it 'docks bike' do
-    expect(subject.dock(double(:bike)).to eq bike
+    expect(subject.dock(double(:bike))).to eq bike
   end
 
   it "Dock full" do
-  subject.capacity.times do subject.dock(double(:bike)) end
+    subject.capacity.times { subject.dock(double(:bike)) }
     expect { subject.dock(double(:bike)) }.to raise_error 'Dock already full'
   end
 
